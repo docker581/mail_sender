@@ -2,8 +2,17 @@
 {% block title %}Главная страница{% endblock %}
 {% block content %}
 
-    <h1>Отправка рассылок подписчикам</h1>
+    <h1>Отправка рассылки подписчикам</h1>
 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eos quod ab modi quam aliquam unde error eveniet, dicta velit nulla vero quo culpa, id sed provident dignissimos necessitatibus corrupti.
+    {% if is_sending_ready %}
+    <p class="mt-4">
+        Отправить рассылку
+    </p>
+    {% else %}
+    <p class="mt-4">Недостаточно данных для отправки рассылки</p>
+    <a href="{% url 'layouts_subscribers' %}" class="btn btn-primary">
+        Посмотреть созданные макеты писем и доступных подписчиков
+    </a>
+    {% endif %}
 
 {% endblock %}

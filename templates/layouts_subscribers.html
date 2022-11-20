@@ -1,9 +1,78 @@
 {% extends "base.html" %}
-{% block title %}Макеты и подписчики{% endblock %}
+{% block title %}Макеты писем и подписчики{% endblock %}
 {% block content %}
 
-    <h1>Макеты и подписчики</h1>
+    <h1>Макеты писем и подписчики</h1>
 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt eveniet cum ipsum consequuntur vitae quis provident ipsa minus nobis, mollitia temporibus labore eligendi et? Modi aspernatur deleniti voluptatum amet?
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <h4 class="mt-4">Макеты писем</h4>
+    {% if layouts %}   
+    <table class="table table-secondary mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Приветствие</th>
+                <th scope="col">Текст</th>
+                <th scope="col">Подпись</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for layout in layouts %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ layout.head }}</td>
+                <td>{{ layout.get_greeting_display }}</td>
+                <td>{{ layout.text }}</td>
+                <td>{{ layout.signature }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <p class="mt-4">Доступных макетов нет.</p>
+    <a href="{% url 'add_layout' %}" class="btn btn-primary">
+        На страницу добавления макета
+    </a>
+    {% endif %}
+
+
+    <h4 class="mt-4">Подписчики</h4>
+    {% if subscribers %}   
+    <table class="table table-info mt-3 mb-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Адрес электронной почты</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for subscriber in subscribers %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ subscriber.first_name }}</td>
+                <td>{{ subscriber.last_name }}</td>
+                <td>{{ subscriber.email }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <p class="mt-4">Доступных макетов нет.</p>
+    <a href="{% url 'add_subscriber' %}" class="btn btn-primary">
+        На страницу добавления подписчика
+    </a>
+    {% endif %}
 
 {% endblock %}
