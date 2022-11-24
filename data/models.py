@@ -26,7 +26,7 @@ class Layout(models.Model):
         verbose_name = 'Макет письма'
         verbose_name_plural='Макеты писем'
     
-    def __str__(self):
+    def __unicode__(self):
         return self.head
 
 
@@ -39,5 +39,5 @@ class Subscriber(models.Model):
         verbose_name = 'Подписчик'
         verbose_name_plural='Подписчики'
     
-    def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)       
+    def __unicode__(self):
+        return self.last_name      

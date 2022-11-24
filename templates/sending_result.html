@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Результат отправки рассылки{% endblock %}
+{% block content %}
+
+    <h1>Результат отправки рассылки</h1>
+
+    {% if message %}
+    <div class="alert alert-secondary mt-3" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+  
+    <a href="{% url 'index' %}" class="btn btn-primary mt-2">
+        На главную
+    </a>
+
+{% endblock %}
