@@ -23,3 +23,9 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
+
+### Пример файла .env
+```bash
+SMTP_SERVER_USER=user@gmail.com
+SMTP_SERVER_PASSWORD=password
+```
