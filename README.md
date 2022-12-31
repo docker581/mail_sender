@@ -1,4 +1,4 @@
-# test_task_mailganer
+# mail_sender
 
 ## Описание проекта
 Cервис отправки email рассылок
